@@ -113,3 +113,6 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+
+# Prive creds for periscope login
+creds.js
