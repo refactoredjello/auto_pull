@@ -1,10 +1,10 @@
 const puppeteer = require('puppeteer');
 const CREDS = require('./creds');
 
-(async () => {
+(async event => {
   const browser = await puppeteer.launch({headless: false});
   const page = await browser.newPage();
-  await page.goto('https://app.periscopedata.com/app/l2/299326/Brand-Matching:-Ulta-Category-Page?widget=3926023&udv=657634');
+  await page.goto(event.url);
 
   const USERNAME_SELECTOR = '#email'
   const PASSWORD_SELECTOR = '#password'
@@ -35,11 +35,9 @@ const CREDS = require('./creds');
   rawText = text.split('\n')
   resultSQL = rawText.reduce((acc, val) => {
     if (isNaN(parseInt(val))) {
-      console.log(acc)
       return acc + val + '\n'
     }
     return acc
   }, '')
-  console.log(resultSQL)
-
+  return resultSQL
 })();
