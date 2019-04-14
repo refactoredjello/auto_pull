@@ -32,8 +32,8 @@ const CREDS = require('./creds');
 
   // Get the SQL
   const text = await page.$$eval('div.CodeMirror-code', e => e[1].innerText);
-  rawText = text.split('\n')
-  resultSQL = rawText.reduce((acc, val) => {
+  const rawText = text.split('\n')
+  const resultSQL = rawText.reduce((acc, val) => {
     if (isNaN(parseInt(val))) {
       return acc + val + '\n'
     }
